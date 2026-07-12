@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Garage de Monthey SA — Concessionnaire Audi Valais</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Garage de Monthey SA, concessionnaire Audi officiel en Valais. Véhicules neufs, occasions certifiées, atelier après-vente et pièces d'origine à Monthey.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;0,6..96,700;1,6..96,500&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --anthracite:#191b1d;
+    --anthracite-2:#24272a;
+    --argent:#b7bcc2;
+    --argent-clair:#dfe1e4;
+    --ivoire:#f4f1ea;
+    --rouge:#9c2b2b;
+    --ardoise:#2e3944;
+    --ok:#3f6b52;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Space Grotesk',sans-serif;
+    background:var(--ivoire);
+    color:var(--anthracite);
+    font-size:16px;
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  img{max-width:100%;display:block;}
+  a{color:inherit;}
+  h1,h2,h3,.serif{
+    font-family:'Bodoni Moda',serif;
+    font-weight:600;
+    letter-spacing:0.01em;
+  }
+  .container{
+    width:100%;
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 20px;
+  }
+  .eyebrow{
+    text-transform:uppercase;
+    letter-spacing:0.18em;
+    font-size:0.72rem;
+    font-weight:600;
+    color:var(--rouge);
+  }
+
+  /* ---------- HEADER ---------- */
+  header{
+    position:fixed;
+    top:0;left:0;right:0;
+    z-index:1000;
+    background:rgba(25,27,29,0.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid rgba(183,188,194,0.15);
+  }
+  .nav-wrap{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:14px 20px;
+    max-width:1180px;
+    margin:0 auto;
+  }
+  .logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    color:var(--ivoire);
+    text-decoration:none;
+  }
+  .logo-mark{
+    width:38px;height:38px;
+    border:1.5px solid var(--argent);
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Bodoni Moda',serif;
+    font-weight:700;
+    font-size:1.1rem;
+    flex-shrink:0;
+  }
+  .logo-text{
+    font-family:'Bodoni Moda',serif;
+    font-size:1.05rem;
+    line-height:1.15;
+  }
+  .logo-text span{
+    display:block;
+    font-family:'Space Grotesk',sans-serif;
+    font-size:0.62rem;
+    letter-spacing:0.14em;
+    color:var(--argent);
+    text-transform:uppercase;
+  }
+  nav.main-nav{
+    display:flex;
+    gap:32px;
+    list-style:none;
+  }
+  nav.main-nav a{
+    color:var(--argent-clair);
+    text-decoration:none;
+    font-size:0.9rem;
+    letter-spacing:0.03em;
+    transition:color 0.2s ease;
+  }
+  nav.main-nav a:hover{color:#fff;}
+  .nav-cta{
+    display:none;
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:13px 26px;
+    border-radius:2px;
+    font-size:0.88rem;
+    letter-spacing:0.04em;
+    text-decoration:none;
+    font-weight:600;
+    border:1px solid transparent;
+    cursor:pointer;
+    transition:transform 0.2s ease, background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    min-height:44px;
+    justify-content:center;
+  }
+  .btn-primary{background:var(--rouge);color:#fff;}
+  .btn-primary:hover{background:#7f2222;}
+  .btn-outline{background:transparent;color:var(--ivoire);border-color:rgba(244,241,234,0.4);}
+  .btn-outline:hover{border-color:#fff;background:rgba(255,255,255,0.06);}
+  .btn-dark{background:var(--anthracite);color:var(--ivoire);}
+  .btn-dark:hover{background:#000;}
+
+  .hamburger{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    gap:5px;
+    width:44px;height:44px;
+    background:none;
+    border:none;
+    cursor:pointer;
+  }
+  .hamburger span{
+    display:block;
+    width:24px;height:2px;
+    background:var(--ivoire);
+    transition:transform 0.25s ease, opacity 0.25s ease;
+    margin:0 auto;
+  }
+  .hamburger.active span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+  .hamburger.active span:nth-child(2){opacity:0;}
+  .hamburger.active span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+
+  .mobile-menu{
+    display:none;
+    flex-direction:column;
+    background:var(--anthracite);
+    border-top:1px solid rgba(183,188,194,0.15);
+    max-height:0;
+    overflow:hidden;
+    transition:max-height 0.3s ease;
+  }
+  .mobile-menu.open{max-height:420px;}
+  .mobile-menu a{
+    color:var(--argent-clair);
+    text-decoration:none;
+    padding:16px 20px;
+    border-bottom:1px solid rgba(183,188,194,0.08);
+    font-size:1rem;
+    min-height:44px;
+    display:flex;
+    align-items:center;
+  }
+  .mobile-menu .btn{margin:16px 20px;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    margin-top:70px;
+    min-height:88vh;
+    display:flex;
+    align-items:flex-end;
+    background:linear-gradient(180deg, rgba(25,27,29,0.35) 0%, rgba(25,27,29,0.55) 55%, rgba(25,27,29,0.96) 100%), url('https://images.unsplash.com/photo-1502877338535-766e1452684a?w=1200&auto=format&fit=crop&q=80') center/cover no-repeat;
+    color:var(--ivoire);
+  }
+  .hero-inner{
+    padding:70px 20px 56px;
+    max-width:1180px;
+    margin:0 auto;
+    width:100%;
+  }
+  .hero h1{
+    font-size:clamp(2.1rem, 8vw, 4.2rem);
+    line-height:1.04;
+    max-width:16ch;
+    margin:14px 0 20px;
+  }
+  .hero h1 em{
+    font-style:italic;
+    color:var(--argent);
+  }
+  .hero p{
+    max-width:46ch;
+    color:var(--argent-clair);
+    font-size:1.05rem;
+    margin-bottom:30px;
+  }
+  .hero-actions{
+    display:flex;
+    flex-wrap:wrap;
+    gap:14px;
+  }
+  .hero-meta{
+    display:flex;
+    flex-wrap:wrap;
+    gap:24px;
+    margin-top:44px;
+    padding-top:24px;
+    border-top:1px solid rgba(183,188,194,0.22);
+  }
+  .hero-meta div{font-size:0.82rem;color:var(--argent);}
+  .hero-meta strong{
+    display:block;
+    font-family:'Bodoni Moda',serif;
+    font-size:1.5rem;
+    color:#fff;
+    font-weight:500;
+  }
+
+  /* ---------- SECTIONS ---------- */
+  section{padding:70px 0;}
+  .section-head{
+    max-width:640px;
+    margin-bottom:44px;
+  }
+  .section-head h2{
+    font-size:clamp(1.7rem, 5vw, 2.6rem);
+    margin-top:10px;
+    color:var(--anthracite);
+  }
+  .section-head p{color:#54595e;margin-top:14px;}
+  .section-dark{background:var(--anthracite);color:var(--ivoire);}
+  .section-dark .section-head p{color:var(--argent-clair);}
+  .section-dark .eyebrow{color:var(--argent);}
+
+  /* fade in */
+  .fade-in{
+    opacity:0;
+    transform:translateY(22px);
+    transition:opacity 0.6s ease, transform 0.6s ease;
+  }
+  .fade-in.visible{opacity:1;transform:translateY(0);}
+
+  /* ---------- ATOUTS ---------- */
+  .atouts-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:22px;
+  }
+  .atout-card{
+    background:#fff;
+    border:1px solid #e6e2d8;
+    padding:26px 24px;
+    border-radius:3px;
+  }
+  .atout-card svg{width:30px;height:30px;stroke:var(--rouge);margin-bottom:16px;}
+  .atout-card h3{font-size:1.15rem;font-weight:500;margin-bottom:8px;}
+  .atout-card p{color:#54595e;font-size:0.94rem;}
+
+  /* ---------- ONGLETS PRESTATIONS ---------- */
+  .tabs-nav{
+    display:flex;
+    gap:6px;
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+    border-bottom:1px solid rgba(183,188,194,0.3);
+    margin-bottom:34px;
+    scrollbar-width:none;
+  }
+  .tabs-nav::-webkit-scrollbar{display:none;}
+  .tab-btn{
+    flex:0 0 auto;
+    background:none;
+    border:none;
+    color:var(--argent-clair);
+    font-family:'Space Grotesk',sans-serif;
+    font-size:0.92rem;
+    letter-spacing:0.02em;
+    padding:14px 18px;
+    min-height:44px;
+    cursor:pointer;
+    border-bottom:2px solid transparent;
+    white-space:nowrap;
+    transition:color 0.2s ease, border-color 0.2s ease;
+  }
+  .tab-btn.active{color:#fff;border-bottom-color:var(--rouge);}
+  .tab-panel{display:none;}
+  .tab-panel.active{display:block;}
+  .offer-list{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:14px;
+  }
+  .offer-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:16px;
+    background:rgba(244,241,234,0.05);
+    border:1px solid rgba(183,188,194,0.2);
+    padding:18px 20px;
+    border-radius:3px;
+  }
+  .offer-row h4{font-family:'Bodoni Moda',serif;font-weight:500;font-size:1.05rem;}
+  .offer-row p{color:var(--argent);font-size:0.86rem;margin-top:4px;}
+  .offer-price{
+    font-family:'Bodoni Moda',serif;
+    font-size:1rem;
+    color:var(--argent-clair);
+    white-space:nowrap;
+    flex-shrink:0;
+  }
+  .tab-panel img{
+    width:100%;
+    border-radius:3px;
+    margin-top:24px;
+    aspect-ratio:16/9;
+    object-fit:cover;
+  }
+
+  /* ---------- MARQUES / VISUELS ---------- */
+  .split{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:30px;
+    align-items:center;
+  }
+  .split img{
+    border-radius:3px;
+    aspect-ratio:4/3;
+    object-fit:cover;
+    width:100%;
+  }
+  .split h2{font-size:clamp(1.6rem,5vw,2.3rem);margin-bottom:16px;}
+  .split p{color:#54595e;margin-bottom:14px;}
+  .check-list{list-style:none;margin-top:18px;}
+  .check-list li{
+    display:flex;
+    gap:12px;
+    padding:10px 0;
+    border-bottom:1px solid #e6e2d8;
+    font-size:0.95rem;
+  }
+  .check-list svg{width:18px;height:18px;stroke:var(--rouge);flex-shrink:0;margin-top:3px;}
+
+  /* ---------- HORAIRES / CONTACT ---------- */
+  .contact-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:34px;
+  }
+  .info-block{
+    background:#fff;
+    border:1px solid #e6e2d8;
+    padding:28px 24px;
+    border-radius:3px;
+  }
+  .info-block h3{
+    font-size:1.1rem;
+    margin-bottom:16px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .info-block svg{width:20px;height:20px;stroke:var(--rouge);}
+  .hours-row{
+    display:flex;
+    justify-content:space-between;
+    padding:9px 0;
+    border-bottom:1px dashed #e6e2d8;
+    font-size:0.9rem;
+  }
+  .hours-row:last-child{border-bottom:none;}
+  .hours-cat{
+    font-family:'Bodoni Moda',serif;
+    font-size:0.95rem;
+    margin:18px 0 6px;
+    color:var(--rouge);
+  }
+  .hours-cat:first-child{margin-top:0;}
+  .contact-line{
+    display:flex;
+    gap:12px;
+    align-items:flex-start;
+    margin-bottom:14px;
+    font-size:0.95rem;
+  }
+  .contact-line svg{width:19px;height:19px;stroke:var(--rouge);flex-shrink:0;margin-top:2px;}
+  .contact-line a{text-decoration:none;border-bottom:1px solid transparent;}
+  .contact-line a:hover{border-color:var(--rouge);}
+  .map-embed{
+    border:1px solid #e6e2d8;
+    border-radius:3px;
+    overflow:hidden;
+    height:280px;
+  }
+  .map-embed iframe{width:100%;height:100%;border:0;}
+
+  /* ---------- CTA FINAL ---------- */
+  .cta-final{
+    background:var(--rouge);
+    color:#fff;
+    text-align:center;
+    padding:64px 20px;
+  }
+  .cta-final h2{color:#fff;font-size:clamp(1.6rem,5vw,2.4rem);margin-bottom:16px;}
+  .cta-final p{max-width:44ch;margin:0 auto 28px;color:rgba(255,255,255,0.85);}
+  .cta-final .btn-outline{border-color:rgba(255,255,255,0.5);color:#fff;}
+  .cta-final .btn-outline:hover{background:rgba(255,255,255,0.12);border-color:#fff;}
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    background:var(--anthracite);
+    color:var(--argent);
+    padding:44px 0 90px;
+    font-size:0.86rem;
+  }
+  .footer-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:30px;
+  }
+  footer h4{
+    font-family:'Bodoni Moda',serif;
+    color:#fff;
+    font-weight:500;
+    margin-bottom:12px;
+    font-size:1rem;
+  }
+  footer a{color:var(--argent);text-decoration:none;}
+  footer a:hover{color:#fff;}
+  footer ul{list-style:none;}
+  footer li{margin-bottom:8px;}
+  .footer-bottom{
+    border-top:1px solid rgba(183,188,194,0.15);
+    margin-top:34px;
+    padding-top:20px;
+    font-size:0.78rem;
+    color:#7b8087;
+  }
+
+  .demo-badge{
+    position:fixed;
+    left:14px;
+    bottom:14px;
+    z-index:1200;
+    background:rgba(25,27,29,0.92);
+    color:var(--ivoire);
+    font-size:0.72rem;
+    letter-spacing:0.03em;
+    padding:9px 13px;
+    border-radius:20px;
+    border:1px solid rgba(183,188,194,0.3);
+    backdrop-filter:blur(6px);
+  }
+
+  @media (min-width: 700px){
+    .atouts-grid{grid-template-columns:repeat(3,1fr);}
+    .split{grid-template-columns:1fr 1fr;}
+    .split.reverse .split-img{order:2;}
+    .contact-grid{grid-template-columns:1.1fr 1fr;}
+    .footer-grid{grid-template-columns:1.6fr 1fr 1fr;}
+  }
+  @media (min-width: 860px){
+    nav.main-nav{display:flex;}
+    .nav-cta{display:flex;}
+    .hamburger{display:none;}
+    .mobile-menu{display:none !important;}
+  }
+  @media (max-width: 859px){
+    nav.main-nav{display:none;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.001ms !important;animation-iteration-count:1 !important;transition-duration:0.001ms !important;scroll-behavior:auto !important;}
+    .fade-in{opacity:1;transform:none;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav-wrap">
+    <a href="#accueil" class="logo">
+      <span class="logo-mark">GM</span>
+      <span class="logo-text">Garage de Monthey<span>Concessionnaire Audi &middot; Valais</span></span>
+    </a>
+    <nav class="main-nav">
+      <a href="#atouts">Pourquoi nous</a>
+      <a href="#prestations">Prestations</a>
+      <a href="#occasions">Occasions</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a href="tel:+41244717313" class="btn btn-outline nav-cta">Appeler l'atelier</a>
+    <button class="hamburger" id="hamburgerBtn" aria-label="Ouvrir le menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#atouts">Pourquoi nous</a>
+    <a href="#prestations">Prestations</a>
+    <a href="#occasions">Occasions</a>
+    <a href="#contact">Contact</a>
+    <a href="tel:+41244717313" class="btn btn-primary">Appeler l'atelier</a>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="accueil">
+    <div class="hero-inner">
+      <p class="eyebrow">Concessionnaire Audi officiel &middot; Monthey, Valais</p>
+      <h1>La conduite <em>Audi</em>, pensée pour durer.</h1>
+      <p>Véhicules neufs et occasions certifiées, atelier après-vente et pièces d'origine. Un seul garage, une équipe qui connaît vos véhicules sur le bout des doigts.</p>
+      <div class="hero-actions">
+        <a href="#prestations" class="btn btn-primary">Voir les prestations</a>
+        <a href="#contact" class="btn btn-outline">Prendre rendez-vous</a>
+      </div>
+      <div class="hero-meta">
+        <div><strong>Audi</strong>Marque officielle</div>
+        <div><strong>07:30</strong>Ouverture atelier</div>
+        <div><strong>Route de Collombey 55</strong>Monthey, VS</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="atouts">
+    <div class="container">
+      <div class="section-head fade-in">
+        <p class="eyebrow">Pourquoi nous confier votre véhicule</p>
+        <h2>Un garage, une seule adresse pour tout Audi</h2>
+        <p>De l'achat à l'entretien, chaque étape est suivie par la même équipe, formée et équipée aux standards constructeur.</p>
+      </div>
+      <div class="atouts-grid">
+        <div class="atout-card fade-in">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 13l2-6a2 2 0 0 1 2-1h10a2 2 0 0 1 2 1l2 6"/><path d="M3 13h18v5a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-1H7v1a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-5z"/><circle cx="7.5" cy="16.5" r="0.6"/><circle cx="16.5" cy="16.5" r="0.6"/></svg>
+          <h3>Agrément constructeur</h3>
+          <p>Concessionnaire Audi officiel : diagnostics, mises à jour et pièces conformes aux exigences du constructeur.</p>
+        </div>
+        <div class="atout-card fade-in">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+          <h3>Rendez-vous rapides</h3>
+          <p>Atelier ouvert du lundi au vendredi, créneaux courts pour l'entretien courant comme pour les réparations.</p>
+        </div>
+        <div class="atout-card fade-in">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 4v5c0 4.5-3 8-7 9-4-1-7-4.5-7-9V7l7-4z"/></svg>
+          <h3>Garantie &amp; assistance</h3>
+          <p>Véhicules neufs et occasions couverts par la garantie et l'assistance routière Audi.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="prestations" class="section-dark">
+    <div class="container">
+      <div class="section-head fade-in">
+        <p class="eyebrow">Nos prestations</p>
+        <h2>Vente, atelier, pièces : tout sous un même toit</h2>
+        <p>Choisissez une catégorie pour voir le détail. Les tarifs d'atelier dépendent du véhicule et sont communiqués sur devis.</p>
+      </div>
+
+      <div class="fade-in">
+        <div class="tabs-nav" role="tablist">
+          <button class="tab-btn active" role="tab" aria-selected="true" data-tab="neuf">Véhicules neufs</button>
+          <button class="tab-btn" role="tab" aria-selected="false" data-tab="occasion">Occasions</button>
+          <button class="tab-btn" role="tab" aria-selected="false" data-tab="atelier">Atelier &amp; entretien</button>
+          <button class="tab-btn" role="tab" aria-selected="false" data-tab="pieces">Pièces &amp; accessoires</button>
+        </div>
+
+        <div class="tab-panel active" id="tab-neuf">
+          <div class="offer-list">
+            <div class="offer-row">
+              <div><h4>Gamme Audi complète</h4><p>Berlines, SUV (Q-Line) et modèles électriques e-tron, configurés selon vos besoins.</p></div>
+              <div class="offer-price">Sur devis</div>
+            </div>
+            <div class="offer-row">
+              <div><h4>Reprise de votre véhicule</h4><p>Estimation et reprise possible à l'achat d'un véhicule neuf.</p></div>
+              <div class="offer-price">Sur devis</div>
+            </div>
+            <div class="offer-row">
+              <div><h4>Financement &amp; leasing</h4><p>Solutions de financement adaptées, étudiées avec nos partenaires.</p></div>
+              <div class="offer-price">Sur devis</div>
+            </div>
+          </div>
+          <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1200&auto=format&fit=crop&q=80" alt="Véhicule Audi neuf" loading="lazy">
+        </div>
+
+        <div class="tab-panel" id="tab-occasion">
+          <div class="offer-list">
+            <div class="offer-row">
+              <div><h4>Occasions certifiées</h4><p>Véhicules contrôlés, historique vérifié, garantie incluse.</p></div>
+              <div class="offer-price">Sur devis</div>
+            </div>
+            <div class="offer-row">
+              <div><h4>Toutes marques acceptées en reprise</h4><p>Estimation gratuite de votre véhicule actuel, Audi ou non.</p></div>
+              <div class="offer-price">Sur devis</div>
+            </div>
+            <div class="offer-row">
+              <div><h4>Essai routier</h4><p>Sur rendez-vous, avec l'un de nos conseillers commerciaux.</p></div>
+              <div class="offer-price">Gratuit</div>
+            </div>
+          </div>
+          <img src="https://images.unsplash.com/photo-1550355191-aa8a80b41353?w=1200&auto=format&fit=crop&q=80" alt="Véhicule d'occasion certifié" loading="lazy">
+        </div>
+
+        <div class="tab-panel" id="tab-atelier">
+          <div class="offer-list">
+            <div class="offer-row">
+              <div><h4>Entretien &amp; révision</h4><p>Selon carnet constructeur, avec pièces et fluides d'origine.</p></div>
+              <div class="offer-price">Sur devis</div>
+            </div>
+            <div class="offer-row">
+              <div><h4>Diagnostic électronique</h4><p>Outils de diagnostic officiels Audi pour un dépannage précis.</p></div>
+              <div class="offer-price">Sur devis</div>
+            </div>
+            <div class="offer-row">
+              <div><h4>Pneus &amp; jantes</h4><p>Montage, équilibrage et stockage saisonnier de vos roues.</p></div>
+              <div class="offer-price">Sur devis</div>
+            </div>
+          </div>
+          <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=1200&auto=format&fit=crop&q=80" alt="Atelier de réparation Audi" loading="lazy">
+        </div>
+
+        <div class="tab-panel" id="tab-pieces">
+          <div class="offer-list">
+            <div class="offer-row">
+              <div><h4>Pièces d'origine Audi</h4><p>Commande et pose de pièces certifiées constructeur.</p></div>
+              <div class="offer-price">Sur devis</div>
+            </div>
+            <div class="offer-row">
+              <div><h4>Accessoires</h4><p>Équipements et accessoires d'origine pour personnaliser votre véhicule.</p></div>
+              <div class="offer-price">Sur devis</div>
+            </div>
+            <div class="offer-row">
+              <div><h4>Clientèle commerciale</h4><p>Offres et suivi dédiés aux flottes et véhicules d'entreprise.</p></div>
+              <div class="offer-price">Sur devis</div>
+            </div>
+          </div>
+          <img src="https://images.unsplash.com/photo-1600661653561-629509216228?w=1200&auto=format&fit=crop&q=80" alt="Pièces et pneus Audi" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="occasions">
+    <div class="container">
+      <div class="split fade-in">
+        <div class="split-img">
+          <img src="https://images.unsplash.com/photo-1553440569-bcc63803a83d?w=1200&auto=format&fit=crop&q=80" alt="Intérieur d'un véhicule Audi">
+        </div>
+        <div>
+          <p class="eyebrow">Après-vente</p>
+          <h2>Un suivi qui ne s'arrête pas à la vente</h2>
+          <p>Notre atelier assure l'entretien courant comme les interventions plus techniques, avec les équipements et procédures Audi.</p>
+          <ul class="check-list">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Techniciens formés aux standards Audi</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Diagnostic électronique officiel</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Pièces d'origine garanties</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Rendez-vous du lundi au vendredi</li>
+          </ul>
+          <a href="#contact" class="btn btn-dark" style="margin-top:26px;">Prendre rendez-vous atelier</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <div class="section-head fade-in">
+        <p class="eyebrow">Contact &amp; horaires</p>
+        <h2>Route de Collombey 55, à Monthey</h2>
+      </div>
+      <div class="contact-grid">
+        <div class="fade-in">
+          <div class="info-block" style="margin-bottom:20px;">
+            <h3><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.1-7-11a7 7 0 0 1 14 0c0 4.9-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Coordonnées</h3>
+            <div class="contact-line"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.1-7-11a7 7 0 0 1 14 0c0 4.9-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><span>Route de Collombey 55<br>1870 Monthey, Suisse</span></div>
+            <div class="contact-line"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 2 .7 3a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.2-1.3a2 2 0 0 1 2.1-.5c1 .4 2 .6 3 .7a2 2 0 0 1 1.7 2z"/></svg><a href="tel:+41244717313">+41 24 471 73 13</a></div>
+            <div class="contact-line"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><a href="mailto:info@garagemonthey.ch">info@garagemonthey.ch</a></div>
+          </div>
+          <div class="map-embed">
+            <iframe src="https://www.google.com/maps?q=Route+de+Collombey+55,+1870+Monthey,+Suisse&output=embed" loading="lazy" title="Localisation Garage de Monthey SA"></iframe>
+          </div>
+        </div>
+        <div class="info-block fade-in">
+          <h3><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>Horaires</h3>
+          <p class="hours-cat">Vente</p>
+          <div class="hours-row"><span>Lundi – vendredi</span><span>08:00–12:00, 13:30–18:30</span></div>
+          <div class="hours-row"><span>Samedi</span><span>09:00–12:00</span></div>
+          <div class="hours-row"><span>Dimanche</span><span>Fermé</span></div>
+          <p class="hours-cat">Après-vente / atelier</p>
+          <div class="hours-row"><span>Lundi – jeudi</span><span>07:30–12:00, 13:15–17:30</span></div>
+          <div class="hours-row"><span>Vendredi</span><span>07:30–12:00, 13:15–17:00</span></div>
+          <div class="hours-row"><span>Samedi – dimanche</span><span>Fermé</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="cta-final fade-in">
+    <div class="container">
+      <h2>Un projet Audi en tête ?</h2>
+      <p>Appelez-nous ou passez à l'atelier, notre équipe vous répond du lundi au samedi.</p>
+      <a href="tel:+41244717313" class="btn btn-outline">+41 24 471 73 13</a>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="container footer-grid">
+    <div>
+      <h4>Garage de Monthey SA</h4>
+      <p>Concessionnaire Audi officiel, Route de Collombey 55, 1870 Monthey, Suisse. Vente de véhicules neufs et occasions, atelier après-vente, pièces d'origine.</p>
+    </div>
+    <div>
+      <h4>Navigation</h4>
+      <ul>
+        <li><a href="#atouts">Pourquoi nous</a></li>
+        <li><a href="#prestations">Prestations</a></li>
+        <li><a href="#occasions">Occasions</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="tel:+41244717313">+41 24 471 73 13</a></li>
+        <li><a href="mailto:info@garagemonthey.ch">info@garagemonthey.ch</a></li>
+        <li>Route de Collombey 55, 1870 Monthey</li>
+      </ul>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    &copy; 2026 Garage de Monthey SA. Site de démonstration, non officiel.
+  </div>
+</footer>
+
+<div class="demo-badge">Site de démonstration réalisé par Horizon IA</div>
+
+<script>
+  // Hamburger menu
+  var hamburgerBtn = document.getElementById('hamburgerBtn');
+  var mobileMenu = document.getElementById('mobileMenu');
+  hamburgerBtn.addEventListener('click', function(){
+    var isOpen = mobileMenu.classList.toggle('open');
+    hamburgerBtn.classList.toggle('active', isOpen);
+    hamburgerBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+  mobileMenu.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      mobileMenu.classList.remove('open');
+      hamburgerBtn.classList.remove('active');
+      hamburgerBtn.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  // Tabs (onglets prestations)
+  var tabBtns = document.querySelectorAll('.tab-btn');
+  var tabPanels = document.querySelectorAll('.tab-panel');
+  tabBtns.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      tabBtns.forEach(function(b){ b.classList.remove('active'); b.setAttribute('aria-selected','false'); });
+      tabPanels.forEach(function(p){ p.classList.remove('active'); });
+      btn.classList.add('active');
+      btn.setAttribute('aria-selected','true');
+      document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+    });
+  });
+
+  // Fade-in on scroll
+  if ('IntersectionObserver' in window){
+    var observer = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (entry.isIntersecting){
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {threshold: 0.15});
+    document.querySelectorAll('.fade-in').forEach(function(el){ observer.observe(el); });
+  } else {
+    document.querySelectorAll('.fade-in').forEach(function(el){ el.classList.add('visible'); });
+  }
+</script>
+</body>
+</html>
